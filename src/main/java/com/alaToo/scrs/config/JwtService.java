@@ -51,13 +51,7 @@ public class JwtService {
                 .compact();
     }
 
-    public Claims getClaimsFromToken(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(getSignInKey())
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
-    }
+
 
     public String getUserEmailFromToken(String token) {
         return getClaimsFromToken(token).getSubject();
