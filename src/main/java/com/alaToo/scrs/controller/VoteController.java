@@ -2,16 +2,15 @@ package com.alaToo.scrs.controller;
 
 import com.alaToo.scrs.service.ComplaintVoteService;
 import com.alaToo.scrs.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/votes")
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class VoteController {
-
-   @Autowired
-   private ComplaintVoteService voteService;
+//
+//    @Autowired
+//    private ComplaintVoteService voteService;
 //
 //    @Autowired
 //    private UserService userService;

@@ -1,6 +1,7 @@
 package com.alaToo.scrs.service;
 
 import com.alaToo.scrs.config.JwtService;
+import com.alaToo.scrs.dto.AuthResponse;
 import com.alaToo.scrs.dto.LoginRequest;
 import com.alaToo.scrs.dto.RegisterRequest;
 import com.alaToo.scrs.entity.User;
