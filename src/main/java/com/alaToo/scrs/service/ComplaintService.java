@@ -111,4 +111,46 @@ public class ComplaintService {
     public List<Complaint> findAll() {
         return complaintRepository.findAll();
     }
+
+    public List<Complaint> findByCreatedBy(User user) {
+        return complaintRepository.findByCreatedByOrderByCreatedAtDesc(user);
+    }
+
+    public List<Complaint> findByStatus(ComplaintStatus status) {
+        return complaintRepository.findByStatusOrderByCreatedAtDesc(status);
+    }
+
+    public List<Complaint> findByType(ComplaintType type) {
+        return complaintRepository.findByTypeOrderByCreatedAtDesc(type);
+    }
+
+    public List<Complaint> findByDepartment(Long departmentId) {
+        return complaintRepository.findByDepartmentIdOrderByCreatedAtDesc(departmentId);
+    }
+
+    public List<Complaint> findNewComplaints() {
+        return complaintRepository.findNewComplaints();
+    }
+
+    public List<Complaint> findAssignedToUser(User user) {
+        return complaintRepository.findByAssignedToOrderByUpdatedAtDesc(user);
+    }
+
+    public List<Complaint> findConfirmedComplaints() {
+        return complaintRepository.findConfirmedComplaints();
+    }
+
+    public void deleteComplaint(Long id) {
+        complaintRepository.deleteById(id);
+    }
+
+    public Long getVoteCount(Long complaintId) {
+        Complaint complaint = findById(complaintId);
+        return complaintVoteRepository.getVoteCountForComplaint(complaint);
+    }
+
+    public Double getAverageRating(Long complaintId) {
+        Complaint complaint = findById(complaintId);
+        return complaintVoteRepository.getAverageRatingForComplaint(complaint);
+    }
 }
