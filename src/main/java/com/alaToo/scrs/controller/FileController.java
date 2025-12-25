@@ -1,5 +1,6 @@
 package com.alaToo.scrs.controller;
 
+import com.alaToo.scrs.entity.ComplaintFile;
 import com.alaToo.scrs.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;

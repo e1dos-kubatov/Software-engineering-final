@@ -31,11 +31,9 @@ public class Complaint {
     @Column(length = 30)
     private ComplaintStatus status = ComplaintStatus.NEW;
 
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by")
     private User createdBy;
 
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "assigned_to")
     private User assignedTo;
 
