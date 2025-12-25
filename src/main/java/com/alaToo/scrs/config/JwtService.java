@@ -59,5 +59,16 @@ public class JwtService {
                 .getBody();
     }
 
+    public String getUserEmailFromToken(String token) {
+        return getClaimsFromToken(token).getSubject();
+    }
 
+    public String getRoleFromToken(String token) {
+        return (String) getClaimsFromToken(token).get("role");
+    }
+
+    private Key getSignInKey() {
+        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+        return Keys.hmacShaKeyFor(keyBytes);
+    }
 }
