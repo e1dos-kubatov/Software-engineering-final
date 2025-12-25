@@ -12,16 +12,14 @@ public class RegisterRequest {
     @NotNull
     private String username;
 
-    @NotNull
     private String password;
 
-    @NotNull
+
     private String firstName;
 
     @NotNull
     private String lastName;
 
-    @NotNull
     @Email
     private String email;
 
