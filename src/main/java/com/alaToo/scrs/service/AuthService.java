@@ -38,20 +38,7 @@ public class AuthService {
         return response;
     }
 
-    public AuthResponse register(RegisterRequest request) {
-        if (userRepository.findByEmail(request.getEmail()).isPresent()) {
-            throw new CustomException("User with this email is already exists", HttpStatus.CONFLICT);
-        }
 
-        User user = new User(
-                request.getUsername(),
-                passwordEncoder.encode(request.getPassword()),
-                request.getFirstName(),
-                request.getLastName(),
-                request.getEmail(),
-                request.getStudentId(),
-                request.getRole()
-        );
 
         AuthResponse authResponse = new AuthResponse();
         authResponse.setToken(
