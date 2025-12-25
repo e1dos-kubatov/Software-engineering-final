@@ -121,5 +121,21 @@ public class ComplaintController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteComplaint(@PathVariable Long id, Authentication authentication) {
+        try {
+            User user = getCurrentUser(authentication);
+            Complaint complaint = complaintService.findById(id);
 
+            // Удалить может только автор или админ
+            if (user.getRole() != UserRole.ADMIN && !complaint.getCreatedBy().getId().equals(user.getId())) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            }
+
+            complaintService.deleteComplaint(id);
+            return ResponseEntity.ok(Map.of("message", "Deleted successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error", "Failed to delete"));
+        }
+    }
 }
