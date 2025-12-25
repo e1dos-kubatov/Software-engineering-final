@@ -31,6 +31,15 @@ public class ComplaintFile {
 
     private java.time.LocalDateTime uploadedAt = java.time.LocalDateTime.now();
 
+    public ComplaintFile() {
+    }
 
+    public ComplaintFile(String fileName, String filePath, String fileType, Long fileSize, Complaint complaint) {
+        this.fileName = fileName;
+        this.filePath = filePath;
+        this.fileType = fileType;
+        this.fileSize = fileSize;
+        this.complaint = complaint;
+    }
 
 }
